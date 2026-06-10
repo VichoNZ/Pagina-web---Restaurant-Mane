@@ -1,0 +1,18 @@
+---
+description: Reglas para backend, APIs, base de datos y lógica del servidor
+globs:
+  - "backend/**/*.js"
+  - "backend/**/*.ts"
+  - "server/**/*.js"
+  - "src/**/*.js"
+  - "src/**/*.ts"
+alwaysApply: false
+---
+
+# Backend
+
+- Mantén los endpoints simples.
+- Valida datos antes de guardar en base de datos.
+- No cambies nombres de rutas existentes sin avisar.
+- No modifiques la estructura de la base de datos sin proponer primero la migración.
+- Si agregas una funcionalidad, incluye cómo probarla con una petición HTTP.
