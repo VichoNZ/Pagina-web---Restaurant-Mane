@@ -1,0 +1,18 @@
+---
+description: Reglas para frontend, HTML, CSS y componentes visuales
+globs:
+  - "frontend/**/*"
+  - "public/**/*"
+  - "**/*.html"
+  - "**/*.css"
+  - "**/*.jsx"
+  - "**/*.tsx"
+alwaysApply: false
+---
+
+# Frontend
+
+- Mantén diseño simple y claro.
+- No cambies toda la interfaz si el usuario pide solo una sección.
+- Evita agregar frameworks nuevos sin permiso.
+- Si editas HTML/CSS/JS, entrega el bloque exacto modificado.

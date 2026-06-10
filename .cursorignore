@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.next/
+.env
+.env.*
+*.log
+*.zip
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.pdf
