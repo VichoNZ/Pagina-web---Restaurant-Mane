@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, String, Time
 
@@ -28,4 +28,4 @@ class Reservation(Base):
     reservation_time = Column(Time, nullable=False)
     people_count = Column(Integer, nullable=False)
     comment = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))

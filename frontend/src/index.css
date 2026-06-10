@@ -1,8 +1,12 @@
 :root {
-  --color-primary: #8b4513;
-  --color-secondary: #d4a574;
-  --color-text: #2c2c2c;
-  --color-background: #faf8f5;
+  --color-primary: #21483f;
+  --color-secondary: #c96842;
+  --color-accent: #f0c36a;
+  --color-text: #1f2933;
+  --color-muted: #667085;
+  --color-background: #f5f7f3;
+  --color-surface: #fffdf8;
+  --color-border: #e4ded2;
   --font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -19,6 +23,10 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
   line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 a {

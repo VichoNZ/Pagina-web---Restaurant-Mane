@@ -1,14 +1,17 @@
 import styles from './MenuCard.module.css';
 
-function MenuCard({ name, description, price, imageUrl, available = true }) {
+function MenuCard({ name, description, price, category, imageUrl, available = true }) {
   return (
     <article className={styles.card}>
-      <img
-        className={styles.image}
-        src={imageUrl || 'https://via.placeholder.com/300x160?text=Plato'}
-        alt={name}
-      />
+      {imageUrl ? (
+        <img className={styles.image} src={imageUrl} alt={name} />
+      ) : (
+        <div className={styles.placeholder}>
+          <span>{category || 'Plato'}</span>
+        </div>
+      )}
       <div className={styles.content}>
+        {category && <span className={styles.category}>{category}</span>}
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.description}>{description}</p>
         <div className={styles.footer}>

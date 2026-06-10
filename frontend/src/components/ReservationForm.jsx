@@ -1,9 +1,47 @@
+import { useState } from 'react';
+import { createReservation } from '../services/api';
 import styles from './ReservationForm.module.css';
 
 function ReservationForm() {
-  const handleSubmit = (event) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState({ type: '', text: '' });
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // TODO Parte 3: enviar datos al backend
+    setSubmitting(true);
+    setMessage({ type: '', text: '' });
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const reservationTime = formData.get('reservation_time');
+    const comment = formData.get('comment')?.trim();
+
+    const reservation = {
+      customer_name: formData.get('customer_name')?.trim(),
+      phone: formData.get('phone')?.trim(),
+      email: formData.get('email')?.trim(),
+      reservation_date: formData.get('reservation_date'),
+      reservation_time:
+        reservationTime?.length === 5 ? `${reservationTime}:00` : reservationTime,
+      people_count: Number(formData.get('people_count')),
+      comment: comment || null,
+    };
+
+    try {
+      await createReservation(reservation);
+      form.reset();
+      setMessage({
+        type: 'success',
+        text: 'Reserva enviada correctamente. Te contactaremos para confirmar.',
+      });
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: error.message || 'No se pudo enviar la reserva.',
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -17,6 +55,8 @@ function ReservationForm() {
           type="text"
           id="customer_name"
           name="customer_name"
+          minLength="2"
+          autoComplete="name"
           required
         />
       </div>
@@ -30,6 +70,8 @@ function ReservationForm() {
           type="tel"
           id="phone"
           name="phone"
+          minLength="6"
+          autoComplete="tel"
           required
         />
       </div>
@@ -43,6 +85,7 @@ function ReservationForm() {
           type="email"
           id="email"
           name="email"
+          autoComplete="email"
           required
         />
       </div>
@@ -84,6 +127,7 @@ function ReservationForm() {
           name="people_count"
           min="1"
           max="20"
+          defaultValue="2"
           required
         />
       </div>
@@ -100,8 +144,17 @@ function ReservationForm() {
         />
       </div>
 
-      <button type="submit" className={styles.submit}>
-        Enviar reserva
+      {message.text && (
+        <p
+          className={`${styles.message} ${styles[message.type]}`}
+          role={message.type === 'error' ? 'alert' : 'status'}
+        >
+          {message.text}
+        </p>
+      )}
+
+      <button type="submit" className={styles.submit} disabled={submitting}>
+        {submitting ? 'Enviando...' : 'Enviar reserva'}
       </button>
     </form>
   );

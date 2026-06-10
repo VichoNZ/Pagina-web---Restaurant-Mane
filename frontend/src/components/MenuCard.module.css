@@ -1,36 +1,72 @@
 .card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  background: var(--color-surface);
+  min-height: 100%;
+}
+
+.image,
+.placeholder {
+  width: 100%;
+  height: 160px;
 }
 
 .image {
-  width: 100%;
-  height: 160px;
   object-fit: cover;
-  background-color: #eee;
+}
+
+.placeholder {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(33, 72, 63, 0.9), rgba(201, 104, 66, 0.8)),
+    var(--color-primary);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.placeholder span {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1rem;
 }
 
+.category {
+  color: var(--color-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .name {
+  color: var(--color-primary);
   font-size: 1.125rem;
-  margin-bottom: 0.25rem;
+  line-height: 1.25;
 }
 
 .description {
+  color: var(--color-muted);
   font-size: 0.875rem;
-  color: #666;
-  margin-bottom: 0.5rem;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: 0.25rem;
 }
 
 .price {
@@ -40,5 +76,6 @@
 
 .unavailable {
   font-size: 0.75rem;
-  color: #c0392b;
+  color: #9a2f2f;
+  font-weight: 700;
 }

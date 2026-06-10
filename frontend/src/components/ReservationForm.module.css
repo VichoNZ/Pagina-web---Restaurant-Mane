@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 480px;
+  width: 100%;
 }
 
 .field {
@@ -12,15 +12,26 @@
 }
 
 .label {
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 0.875rem;
 }
 
 .input,
 .textarea {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
+  color: var(--color-text);
+  padding: 0.7rem 0.8rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(33, 72, 63, 0.15);
+  outline: none;
 }
 
 .textarea {
@@ -29,7 +40,8 @@
 }
 
 .submit {
-  padding: 0.75rem;
+  align-self: flex-start;
+  padding: 0.8rem 1.25rem;
   background-color: var(--color-primary);
   color: #fff;
   border: none;
@@ -40,4 +52,33 @@
 
 .submit:hover {
   opacity: 0.9;
+}
+
+.submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.message {
+  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+}
+
+.success {
+  background: #e8f5ef;
+  border: 1px solid #9ccbb7;
+  color: #226247;
+}
+
+.error {
+  background: #fff0ef;
+  border: 1px solid #e1a4a0;
+  color: #9a2f2f;
+}
+
+@media (max-width: 520px) {
+  .submit {
+    width: 100%;
+  }
 }
