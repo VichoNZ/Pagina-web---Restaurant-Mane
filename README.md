@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 
 =======
 # Restaurant Mane
@@ -130,4 +129,4 @@ Invoke-RestMethod -Method Post `
   -ContentType "application/json" `
   -Body '{"customer_name":"Vicente","phone":"+56912345678","email":"vicente@example.com","reservation_date":"2026-06-15","reservation_time":"20:00:00","people_count":4,"comment":"Mesa cerca de la ventana"}'
 ```
->>>>>>> Stashed changes
+
